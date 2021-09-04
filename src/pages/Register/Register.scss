@@ -1,0 +1,24 @@
+@use '../../partials/mixins' as *;
+
+.register {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem;
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    gap: 1rem;
+
+    @include mid-mobile {
+      width: 400px;
+      align-self: center;
+    }
+  }
+}
