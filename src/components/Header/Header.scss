@@ -1,0 +1,12 @@
+@use '../../partials/mixins' as *;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem;
+
+  &__nav {
+    display: flex;
+    gap: 1rem;
+  }
+}
