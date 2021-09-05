@@ -7,6 +7,8 @@ import Register from "./pages/Register/Register";
 import axios from "axios";
 import Header from "./components/Header/Header";
 import { AuthProvider } from "./contexts/useAuthContext";
+import PrivateRoute from "./util/PrivateRoute";
+import Dashboard from "./pages/Dashboard/Dashboard";
 
 axios.defaults.withCredentials = true;
 
@@ -15,14 +17,8 @@ function App() {
     <AuthProvider>
       <Router>
         <Header />
-        <button
-          onClick={() => {
-            axios.delete("http://localhost:8080/user/logout");
-          }}
-        >
-          logout
-        </button>
         <Switch>
+          <PrivateRoute path="/dashboard" exact component={Dashboard} />
           <Route path="/" exact component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
