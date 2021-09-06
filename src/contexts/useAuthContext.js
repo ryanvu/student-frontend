@@ -1,19 +1,23 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const AuthContext = createContext();
+
+const API_URL = process.env.REACT_APP_API_URL;
 
 export const useAuthContext = () => {
   return useContext(AuthContext);
 };
 
 export const AuthProvider = ({ children }) => {
+  const history = useHistory();
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
     axios
-      .get("http://localhost:8080/user/isAuth")
+      .get(`${API_URL}/user/isAuth`)
       .then((res) => {
         console.log(res);
         if (res.data.isAuth) {
@@ -26,24 +30,29 @@ export const AuthProvider = ({ children }) => {
       });
   }, []);
 
-  const checkAuth = () => {
+  const register = (data) => {
     axios
-      .get("http://localhost:8080/user/isAuth")
+      .post(`${API_URL}/user/register`, data)
       .then((res) => {
-        console.log(res);
+        if (res.data.isAuth) {
+          setIsAuth(res.data.isAuth);
+          setUser(res.data.session);
+          history.push("/dashboard");
+        }
       })
       .catch((err) => {
-        console.log(err);
+        console.log(JSON.stringify(err));
       });
   };
 
   const login = (data) => {
     axios
-      .post("http://localhost:8080/user/login", data)
+      .post(`${API_URL}/user/login`, data)
       .then((res) => {
         if (res.data.isAuth) {
           setIsAuth(res.data.isAuth);
           setUser(res.data.session);
+          history.push("/dashboard");
         }
       })
       .catch((err) => {
@@ -53,9 +62,10 @@ export const AuthProvider = ({ children }) => {
 
   const logout = () => {
     axios
-      .delete("http://localhost:8080/user/logout")
+      .delete(`${API_URL}/user/logout`)
       .then((res) => {
         setUser(null);
+        history.push("/");
       })
       .catch((err) => {
         console.log(err);
@@ -63,9 +73,10 @@ export const AuthProvider = ({ children }) => {
   };
 
   const values = {
-    checkAuth,
     isAuth,
+    setIsAuth,
     user,
+    register,
     login,
     logout,
   };

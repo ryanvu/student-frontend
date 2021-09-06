@@ -1,0 +1,28 @@
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
+.me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+  border-radius: 20px;
+
+  &:hover {
+    background: rgb(82, 78, 78);
+    cursor: pointer;
+  }
+
+  &__avatar {
+    background: $white;
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50px;
+  }
+
+  &__name {
+    font-weight: bold;
+    font-size: 15px;
+    margin-right: 0.5rem;
+  }
+}

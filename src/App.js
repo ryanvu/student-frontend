@@ -14,17 +14,17 @@ axios.defaults.withCredentials = true;
 
 function App() {
   return (
-    <AuthProvider>
-      <Router>
+    <Router>
+      <AuthProvider>
         <Header />
         <Switch>
-          <PrivateRoute path="/dashboard" exact component={Dashboard} />
           <Route path="/" exact component={Home} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <PrivateRoute path="/dashboard" exact component={Dashboard} />
         </Switch>
-      </Router>
-    </AuthProvider>
+      </AuthProvider>
+    </Router>
   );
 }
 

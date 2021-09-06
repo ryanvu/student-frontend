@@ -1,6 +1,7 @@
 import React from "react";
 import { useAuthContext } from "../../contexts/useAuthContext";
 import axios from "axios";
+import "./Home.scss";
 const Home = () => {
   const { user } = useAuthContext();
 

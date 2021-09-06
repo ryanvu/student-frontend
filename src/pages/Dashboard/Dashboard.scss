@@ -1,0 +1,18 @@
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+.dashboard {
+  margin: 1rem;
+
+  &__header {
+    background: $gray;
+    color: $yellow;
+    display: flex;
+    align-items: center;
+    padding: 1rem;
+    justify-content: space-between;
+    border-radius: 10px;
+  }
+  &__title {
+    color: $yellow;
+  }
+}

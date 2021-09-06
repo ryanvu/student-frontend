@@ -1,5 +1,5 @@
 @use '../../partials/mixins' as *;
-
+@use '../../partials/variables' as *;
 .input {
   border: none;
   padding: 0.5rem 0.25rem;
@@ -22,5 +22,19 @@
     display: flex;
     flex-direction: column;
     align-self: stretch;
+  }
+
+  &__err {
+    font-size: 10px;
+    margin-top: 0.25rem;
+    color: rgb(239, 128, 128);
+    padding: 0.1rem 0.25rem;
+    border-radius: 3px;
+
+    text-align: right;
+    align-self: flex-end;
+    @include tablet {
+      font-size: 12px;
+    }
   }
 }
