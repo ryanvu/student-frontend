@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Dashboard.scss";
 import { useAuthContext } from "../../contexts/useAuthContext";
+import MyLessons from "../../components/MyLessons/MyLessons";
 
 const Dashboard = () => {
   const { user } = useAuthContext();
@@ -24,6 +25,7 @@ const Dashboard = () => {
           <h2 className="dashboard__title">Dashboard</h2>
           <p>{user.id}</p>
         </div>
+        <MyLessons />
       </div>
     )
   );

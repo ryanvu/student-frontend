@@ -16,7 +16,7 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <div class="wrapper">
+        <div className="wrapper">
           <Header />
           <Switch>
             <Route path="/" exact component={Home} />

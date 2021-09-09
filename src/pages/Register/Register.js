@@ -9,7 +9,7 @@ import useForm from "../../hooks/useForm";
 import { useAuthContext } from "../../contexts/useAuthContext";
 
 const Register = () => {
-  const { register } = useAuthContext();
+  const { register, responseError } = useAuthContext();
   const { formData, handleSubmit, handleInputChange, errors } = useForm(
     {
       first: "",
@@ -67,6 +67,7 @@ const Register = () => {
         />
         <button className="register__btn">Register</button>
       </form>
+      {responseError && <p>{responseError}</p>}
     </div>
   );
 };

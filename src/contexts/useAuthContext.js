@@ -14,6 +14,7 @@ export const AuthProvider = ({ children }) => {
   const history = useHistory();
   const [isAuth, setIsAuth] = useState(false);
   const [user, setUser] = useState(null);
+  const [responseError, setResponseError] = useState("");
 
   useEffect(() => {
     axios
@@ -41,7 +42,7 @@ export const AuthProvider = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log(JSON.stringify(err));
+        setResponseError(err.response.data.message);
       });
   };
 
@@ -56,7 +57,7 @@ export const AuthProvider = ({ children }) => {
         }
       })
       .catch((err) => {
-        console.log(err);
+        setResponseError(err.response.data.message);
       });
   };
 
@@ -68,7 +69,7 @@ export const AuthProvider = ({ children }) => {
         history.push("/");
       })
       .catch((err) => {
-        console.log(err);
+        setResponseError(err.response.data.message);
       });
   };
 
@@ -79,6 +80,7 @@ export const AuthProvider = ({ children }) => {
     register,
     login,
     logout,
+    responseError,
   };
 
   return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
