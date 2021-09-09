@@ -7,6 +7,14 @@
   justify-content: center;
   margin: 1rem;
 
+  @include tablet {
+    flex: 2;
+  }
+
+  &__title {
+    font-family: "American Captain";
+  }
+
   &__form {
     display: flex;
     flex-direction: column;

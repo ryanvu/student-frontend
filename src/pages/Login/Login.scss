@@ -7,6 +7,10 @@
   justify-content: center;
   margin: 1rem;
 
+  @include desktop {
+    flex: 2;
+  }
+
   &__form {
     display: flex;
     flex-direction: column;

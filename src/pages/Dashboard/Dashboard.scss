@@ -2,6 +2,12 @@
 @use '../../partials/variables' as *;
 .dashboard {
   margin: 1rem;
+  background: $gray;
+  @include desktop {
+    justify-content: center;
+    align-items: center;
+    flex: 2;
+  }
 
   &__header {
     background: $gray;

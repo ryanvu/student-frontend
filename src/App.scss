@@ -1,0 +1,6 @@
+@use './partials/mixins' as *;
+.wrapper {
+  @include desktop {
+    display: flex;
+  }
+}

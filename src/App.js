@@ -16,13 +16,15 @@ function App() {
   return (
     <Router>
       <AuthProvider>
-        <Header />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <PrivateRoute path="/dashboard" exact component={Dashboard} />
-        </Switch>
+        <div class="wrapper">
+          <Header />
+          <Switch>
+            <Route path="/" exact component={Home} />
+            <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
+            <PrivateRoute path="/dashboard" exact component={Dashboard} />
+          </Switch>
+        </div>
       </AuthProvider>
     </Router>
   );

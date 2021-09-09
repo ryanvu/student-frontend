@@ -6,7 +6,7 @@ import { useAuthContext } from "../../contexts/useAuthContext";
 
 const Login = () => {
   const { login } = useAuthContext();
-  const { handleSubmit, handleInputChange, formData } = useForm(
+  const { handleSubmit, handleInputChange, formData, errors } = useForm(
     { username: "", password: "" },
     () => {
       login(formData);
@@ -21,6 +21,7 @@ const Login = () => {
           onChange={handleInputChange}
           name="username"
           value={formData.username}
+          error={errors.username}
         />
         <Input
           label="Password"
@@ -28,6 +29,7 @@ const Login = () => {
           name="password"
           type="password"
           value={formData.password}
+          error={errors.password}
         />
         <button className="login__btn">Login</button>
       </form>

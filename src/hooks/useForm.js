@@ -1,8 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const useForm = (initialState, submitCallback) => {
   const [formData, setFormData] = useState(initialState);
   const [errors, setErrors] = useState({});
+  const [allowSubmit, setAllowSubmit] = useState(false);
 
   const validateInputs = (values) => {
     let errors = {};
@@ -39,16 +40,23 @@ const useForm = (initialState, submitCallback) => {
       [e.target.name]: e.target.value,
     });
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateInputs(formData));
-    const errorLength = Object.keys(errors).length;
 
-    if (errorLength <= 0) {
+    if (allowSubmit) {
       setFormData(initialState);
       submitCallback?.(formData);
     }
   };
+
+  useEffect(() => {
+    if (Object.keys(errors).length === 0) {
+      setAllowSubmit(true);
+    }
+  }, [errors]);
+
   return {
     formData,
     handleInputChange,

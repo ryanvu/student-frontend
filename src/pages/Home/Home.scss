@@ -1,4 +1,12 @@
 @use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
 .home {
-  margin: 1rem;
+  padding: 1rem;
+  align-self: stretch;
+  background: $gray;
+
+  @include desktop {
+    flex: 2;
+  }
 }
