@@ -1,17 +1,19 @@
 import React, { useState } from "react";
 import "./Select.scss";
 
-const Select = ({ options }) => {
+const Select = ({ options, handleChange }) => {
   const [selected, setSelected] = useState("Select account type..");
   const [showDropdown, setShowDropdown] = useState(false);
 
   const select = (option) => {
     setSelected(option);
+    handleChange(option);
     setShowDropdown((prev) => !prev);
   };
+
   return (
     <div className="select">
-      <div class="select__selection">
+      <div className="select__selection">
         <span>{selected}</span>
         <span
           className="select__selection-arrow"

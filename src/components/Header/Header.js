@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 import { useAuthContext } from "../../contexts/useAuthContext";
 import { useHistory } from "react-router-dom";
 import Me from "../Me/Me";
+import NavItem from "../NavItem/NavItem";
 
 const Header = () => {
   const { user, logout } = useAuthContext();
@@ -32,6 +33,8 @@ const Header = () => {
         {user && (
           <>
             <Me user={user} />
+            <NavItem title="Lessons" link="/lessons" />
+            <NavItem title="Settings" link="/settings" />
             <button
               onClick={() => {
                 logout();

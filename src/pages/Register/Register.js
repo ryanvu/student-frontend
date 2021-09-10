@@ -14,18 +14,29 @@ const accountTypes = ["Teacher", "Student"];
 
 const Register = () => {
   const { register, responseError } = useAuthContext();
-  const { formData, handleSubmit, handleInputChange, errors } = useForm(
+  const {
+    formData,
+    handleSubmit,
+    handleInputChange,
+    handleUserTypeChange,
+    errors,
+  } = useForm(
     {
       first: "",
       last: "",
       username: "",
       email: "",
       password: "",
+      user_type: "",
     },
     () => {
       register(formData);
     }
   );
+
+  const handleSelectChange = (value) => {
+    handleUserTypeChange(value.toLowerCase());
+  };
 
   return (
     <div className="register">
@@ -69,7 +80,7 @@ const Register = () => {
           value={formData.password}
           error={errors.password}
         />
-        <Select options={accountTypes} />
+        <Select options={accountTypes} handleChange={handleSelectChange} />
         <button className="register__btn">Register</button>
         {responseError && <Error message={responseError} />}
       </form>

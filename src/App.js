@@ -9,6 +9,7 @@ import Header from "./components/Header/Header";
 import { AuthProvider } from "./contexts/useAuthContext";
 import PrivateRoute from "./util/PrivateRoute";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import Lessons from "./pages/Lessons/Lessons";
 
 axios.defaults.withCredentials = true;
 
@@ -22,6 +23,8 @@ function App() {
             <Route path="/" exact component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/register" component={Register} />
+            <Route path="/lessons" component={Lessons} />
+            <Route path="/settings" component={Lessons} />
             <PrivateRoute path="/dashboard" exact component={Dashboard} />
           </Switch>
         </div>

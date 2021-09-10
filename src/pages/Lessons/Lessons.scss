@@ -1,0 +1,11 @@
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
+.lessons {
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  @include desktop {
+    flex: 2;
+  }
+}

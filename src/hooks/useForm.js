@@ -41,6 +41,13 @@ const useForm = (initialState, submitCallback) => {
     });
   };
 
+  const handleUserTypeChange = (value) => {
+    setFormData({
+      ...formData,
+      user_type: value,
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateInputs(formData));
@@ -62,6 +69,7 @@ const useForm = (initialState, submitCallback) => {
     handleInputChange,
     handleSubmit,
     handleRadioChange,
+    handleUserTypeChange,
     errors,
   };
 };
