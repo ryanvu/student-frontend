@@ -1,5 +1,6 @@
 import React from "react";
 import Input from "../../components/Input/Input";
+import Select from "../../components/Select/Select";
 
 //stylesheets
 import "./Register.scss";
@@ -8,6 +9,8 @@ import "./Register.scss";
 import useForm from "../../hooks/useForm";
 import { useAuthContext } from "../../contexts/useAuthContext";
 import Error from "../../components/Error/Error";
+
+const accountTypes = ["Teacher", "Student"];
 
 const Register = () => {
   const { register, responseError } = useAuthContext();
@@ -66,6 +69,7 @@ const Register = () => {
           value={formData.password}
           error={errors.password}
         />
+        <Select options={accountTypes} />
         <button className="register__btn">Register</button>
         {responseError && <Error message={responseError} />}
       </form>
