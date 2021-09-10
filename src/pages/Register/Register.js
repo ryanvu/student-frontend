@@ -7,6 +7,7 @@ import "./Register.scss";
 //hooks
 import useForm from "../../hooks/useForm";
 import { useAuthContext } from "../../contexts/useAuthContext";
+import Error from "../../components/Error/Error";
 
 const Register = () => {
   const { register, responseError } = useAuthContext();
@@ -66,8 +67,8 @@ const Register = () => {
           error={errors.password}
         />
         <button className="register__btn">Register</button>
+        {responseError && <Error message={responseError} />}
       </form>
-      {responseError && <p>{responseError}</p>}
     </div>
   );
 };

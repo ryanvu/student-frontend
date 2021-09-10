@@ -1,0 +1,13 @@
+@use '../../partials/mixins' as *;
+@use '../../partials/variables' as *;
+
+.error {
+  border: 1px solid rgb(224, 84, 84);
+  background: rgb(240, 149, 149);
+  border-radius: 3px;
+  align-self: stretch;
+  &__msg {
+    color: rgb(221, 63, 63);
+    padding: 1rem;
+  }
+}
